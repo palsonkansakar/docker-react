@@ -14,7 +14,7 @@ after_script:
   - docker images
 
 before_deploy:
-  - docker login -u "palsonkansakar" -p "fantasypalson"
+  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
 deploy:
   provider: script
   script: docker push palsonkansakar/docker-react
