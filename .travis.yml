@@ -9,3 +9,14 @@ before_install:
 
 script:
  - docker run -e CI=true palsonkansakar/docker-react npm run test
+
+after_script:
+  - docker images
+
+before_deploy:
+  - docker login -u "palsonkansakar" -p "fantasypalson"
+deploy:
+  provider: script
+  script: docker push palsonkansakar/docker-react
+  on:
+    branch: master
